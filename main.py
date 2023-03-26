@@ -2,7 +2,13 @@
 
 import sys
 from api import completion, chatCompletion
-from utils import stream_response_to_stdout, generate_user_message, generate_assistant_message, stream_chat_completion_to_stdout
+from utils import (
+    stream_response_to_stdout,
+    generate_user_message,
+    generate_assistant_message,
+    stream_chat_completion_to_stdout,
+)
+
 
 def main():
     validateArgs()
@@ -24,7 +30,7 @@ def main():
             print()
             sentence = "".join(resArr)
             history.append(generate_assistant_message(sentence))
-            
+
 
 def validateArgs():
     if len(sys.argv) < 2:
@@ -32,7 +38,7 @@ def validateArgs():
         raise Exception("Invalid arguments")
     if not sys.argv[1] in ["chat", "ask"]:
         raise Exception("Unsupported sub function")
-        
-    
+
+
 if __name__ == "__main__":
     main()
