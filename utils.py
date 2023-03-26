@@ -1,13 +1,12 @@
 from openai import openai_object
+import sys
+import time
 
-# It extracts the response from openai 
-def extract_completion_response(res: openai_object):
-    try:
-        return res.choices[0].text
-    except Exception as e:
-        print(f"Encounter exception when extracting OAI response: {e}. The response is {res}")
-        return None
-    
+def stream_response_to_stdout(res):
+    for ans in res:
+        sys.stdout.write(ans.choices[0].text)
+        sys.stdout.flush()
+        time.sleep(0.2) # slow down the output so it looks natural to human
 
 def generate_user_message(msg: str):
     return {"role": "user", "content": msg}

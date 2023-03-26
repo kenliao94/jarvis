@@ -12,6 +12,7 @@ def completion(prompt: str, max_tokens: int = 20):
         prompt= prompt,
         max_tokens= max_tokens,
         temperature= 0.7,
+        stream=True,
     )    
     return response
 
