@@ -18,7 +18,7 @@ def stream_chat_completion_to_stdout(res, resArr = None):
             sys.stdout.flush()
             if resArr:
                 resArr.append(delta.content)
-            time.sleep(0.2) # slow down the output so it looks natural to human
+            time.sleep(0.1) # slow down the output so it looks natural to human
 
 def generate_user_message(msg: str):
     return {"role": "user", "content": msg}

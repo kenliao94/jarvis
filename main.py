@@ -27,7 +27,7 @@ def main():
             res = chatCompletion(history)
             resArr = []
             stream_chat_completion_to_stdout(res, resArr)
-            print()
+            print("\n")
             sentence = "".join(resArr)
             history.append(generate_assistant_message(sentence))
 
