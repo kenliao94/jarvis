@@ -25,3 +25,7 @@ def generate_user_message(msg: str):
 
 def generate_assistant_message(msg: str):
     return {"role": "assistant", "content": msg}
+
+def generate_system_message(msg: str):
+    return {"role": "system", "content": msg}
+

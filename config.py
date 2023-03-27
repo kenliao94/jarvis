@@ -1,1 +1,0 @@
-# put all the setting like temperature ... etc
