@@ -31,8 +31,8 @@ def handleActionQuery(query, history):
         
         return "<|NO_OPS|>"
     elif query.startswith("[ANNOTATE]"):
-        return
+        raise NotImplementedError
     elif query.startswith("[TEMPLATE]"):
-        return
+        raise NotImplementedError
     
     raise Exception(f"Unsupported action query: {query}")
