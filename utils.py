@@ -10,7 +10,9 @@ def stream_response_to_stdout(res, resArr = None):
             resArr.append(ans.choices[0].text)
         time.sleep(0.1) # slow down the output so it looks natural to human
 
+# print the response in green with a jitter of 0.1 s
 def stream_chat_completion_to_stdout(res, resArr = None):
+    sys.stdout.write("\033[32m")
     for ans in res:
         delta = ans.choices[0].delta
         if "content" in delta and delta.content != None:
@@ -19,6 +21,7 @@ def stream_chat_completion_to_stdout(res, resArr = None):
             if resArr:
                 resArr.append(delta.content)
             time.sleep(0.1) # slow down the output so it looks natural to human
+    sys.stdout.write("\033[0m")        
 
 def generate_user_message(msg: str):
     return {"role": "user", "content": msg}
