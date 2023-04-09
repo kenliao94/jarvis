@@ -1,2 +1,5 @@
 A thin CLI client to OpenAI
 
+To install
+sudo chmod +x jarvis
+export PATH=$PATH:$(pwd)
