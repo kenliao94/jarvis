@@ -7,8 +7,10 @@ from utils import (
     generate_user_message,
     generate_assistant_message,
     stream_chat_completion_to_stdout,
+    generate_system_message,
 )
 from actions import isActionQuery, handleActionQuery
+import readline
 
 
 def main():
@@ -18,12 +20,15 @@ def main():
         res = completion(query, 1000)
         stream_response_to_stdout(res)
     elif sys.argv[1] == "chat":
-        print("Starting chat session. Quit by typing 'quit' or ctrl + D")
-        history = []
+        print("Starting chat session. Quit by typing 'quit'. Clear chat context by typing 'clear'")
+        history = [generate_system_message("You are an AI assistant. Keep the answer concise unless the user wants to elaborate.")]
         while True:
             query = input("> ")
             if query == "quit":
                 break
+            if query == "clear":
+                history = history[:1]
+                continue
             if isActionQuery(query):
                 result = handleActionQuery(query, history)
                 if result == "<|NO_OPS|>":
